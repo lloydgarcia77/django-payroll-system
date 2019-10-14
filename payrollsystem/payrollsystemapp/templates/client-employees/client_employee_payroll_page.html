@@ -1,0 +1,49 @@
+{% extends 'client-employees/client_employee_index_page.html' %}
+
+{% block inner_body %}
+<!-- Breadcrumbs-->
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="{% url 'client_index_page' %}">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Payroll Page</li>
+</ol>
+
+
+<!-- DataTables Example -->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Payroll History Table
+    </div>
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table class="table table-bordered" id="table-client-employee-payroll-history" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="text-center" style="width: 10%">ID</th>
+                    <th class="text-center" style="width: 40%">Payroll cut-off period</th>
+                    <th class="text-center" style="width: 30%">Payroll Date</th>
+                    <th class="text-center" style="width: 20%">Actions</th>
+                </tr>
+                </thead>
+                <tfoot>
+                </tfoot>
+                <tbody>
+                    {% include 'client-employees/client_employee_payroll_table_page.html' %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<p class="small text-center text-muted my-5">
+    <em>To God be the Glory</em>
+</p>
+
+{% endblock inner_body %}
+
+

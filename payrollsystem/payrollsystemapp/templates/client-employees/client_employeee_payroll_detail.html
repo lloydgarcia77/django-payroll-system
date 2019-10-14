@@ -1,0 +1,139 @@
+{% load crispy_forms_tags %}
+<!--https://bootsnipp.com/snippets/Pb15-->
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Payroll Details</h5>
+    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+
+<div class="modal-body">
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <address>
+                <strong>Payroll cut-off period:</strong>
+                <br>
+                {{ employee_detail.payroll_cut_off_period_from }} - {{ employee_detail.payroll_cut_off_period_to }}
+                <br>
+            </address>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+            <p>
+                <em>Payroll date: {{ employee_detail.payroll_date }}</em>
+            </p>
+        </div>
+        <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Salary Computation</th>
+                            <th class="text-center">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td class="col-md-9"><em>Monthly Rate</em></h4></td>
+                            <td class="col-md-1 text-left"><span>&#8369;</span>{{ employee_detail.monthly_rate }}</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-9"><em>Monthly Allowance</em></h4></td>
+                            <td class="col-md-1 text-left"><span>&#8369;</span>{{ employee_detail.monthly_allowance }}</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-9"><em>Basic Pay</em></h4></td>
+                            <td class="col-md-1 text-left"><span>&#8369;</span>{{ employee_detail.basic_pay }}</td>
+                        </tr>
+
+                         <tr>
+                            <td class="col-md-9"><em>Allowance</em></h4></td>
+                            <td class="col-md-1 text-left"><span>&#8369;</span>{{ employee_detail.allowance }}</td>
+                        </tr>
+
+                         <tr>
+                            <td class="col-md-9"><em>Overtime Pay</em></h4></td>
+                            <td class="col-md-1 text-left"><span>&#8369;</span>{{ employee_detail.overtime_pay }}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-md-9"><em>Legal Holiday</em></h4></td>
+                            <td class="col-md-1 text-left"><span>&#8369;</span>{{ employee_detail.legal_holiday }}</td>
+                        </tr>
+
+                         <tr>
+                            <td class="col-md-9"><em>Sunday/Special Holiday</em></h4></td>
+                            <td class="col-md-1 text-left"><span>&#8369;</span>{{ employee_detail.special_holiday }}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-md-9"><em>Late/Absences</em></h4></td>
+                            <td class="col-md-1 text-left"><span>&#8369;</span>{{ employee_detail.late_or_absences }}</td>
+                        </tr>
+
+                         <tr>
+                            <td class="col-md-9"><em>Salary Cash Advance</em></h4></td>
+                            <td class="col-md-1 text-left"><span>&#8369;</span>{{ employee_detail.salary_or_cash_advance }}</td>
+                        </tr>
+
+                       <!--deductions-->
+
+                        <tr class="text-danger">
+                                <td class="col-md-9"  ><em>SSS Premiums</em></h4></td>
+                                <td class="col-md-1 text-left"><span>&#8369;</span>{{ employee_detail.sss_premiums }}</td>
+                        </tr>
+                        <tr class="text-danger">
+                            <td class="col-md-9"><em>Phil-health Contribution</em></h4></td>
+                            <td class="col-md-1 text-left"><span>&#8369;</span>{{ employee_detail.philhealth_contribution }}</td>
+                        </tr>
+                        <tr class="text-danger">
+                            <td class="col-md-9"><em>Pag-ibig Contribution</em></h4></td>
+                            <td class="col-md-1 text-left"><span>&#8369;</span>{{ employee_detail.pagibig_contribution }}</td>
+                        </tr>
+
+                         <tr class="text-danger">
+                            <td class="col-md-9"><em>Withholding Tax</em></h4></td>
+                            <td class="col-md-1 text-left"><span>&#8369;</span>{{ employee_detail.withholding_tax }}</td>
+                        </tr>
+
+                        <tr class="text-danger">
+                            <td class="col-md-9"><em>Pag-ibig Loan</em></h4></td>
+                            <td class="col-md-1 text-left"><span>&#8369;</span>{{ employee_detail.pagibig_loan }}</td>
+                        </tr>
+
+
+                            <tr>
+                                <td class="text-right">
+                                    <p>
+                                        <strong>Gross Pay: </strong>
+                                    </p>
+                                    <p>
+                                        <strong>Total Deductions: </strong>
+                                    </p>
+                                </td>
+                                <td class="text-left">
+                                    <p>
+                                        <strong><span>&#8369;</span>{{ employee_detail.gross_pay }}</strong>
+                                    </p>
+                                    <p class="text-danger">
+                                        <strong><span>&#8369;</span>{{ employee_detail.total_deduction }}</strong>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td  class="text-right"><h4><strong>Net Pay: </strong></h4></td>
+                                <td class="text-left text-success"><h4><strong><span>&#8369;</span>{{ employee_detail.net_pay }}</strong></h4></td>
+                            </tr>
+
+                    </tbody>
+                </table>
+
+
+
+	</div>
+</div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>

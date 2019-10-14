@@ -1,0 +1,60 @@
+{% extends 'registration/base_registration_form.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+Employee Registration Form
+{% endblock title %}
+
+{% block body_block %}
+
+<div class="container">
+    <div class="card card-register mx-auto mt-5">
+        <div class="card-header">Register employee account</div>
+        <div class="card-body">
+            <div id="regForm-message-box" class="alert alert-danger" role="alert" style="display: none">
+            </div>
+            <form class="user" method="POST" id="regForm">
+              {% csrf_token %}
+                <!-- One "tab" for each step in the form: -->
+              {% include 'partials/_messages.html' %}
+
+                <div class="tab">
+                    <h1>Personal Information:</h1>
+                    {{ emp_prof_reg_form|crispy }}
+                </div>
+                <div class="tab">
+                    <h1>Company Information:</h1>
+                    {{ emp_comp_reg_form|crispy }}
+                </div>
+                <div class="tab">
+                    <h1>Personal Benefits Details:</h1>
+                    {{ emp_pers_bene_reg_form|crispy }}
+                </div>
+                <div class="tab">
+                    <h1>Account Detail:</h1>
+
+                    {{ emp_user_reg_form|crispy }}
+                </div>
+                <div class="form-group"  style="padding-top: 20px;">
+                    <div style="float:right;">
+                        <button class="btn btn-primary btn-user btn-block" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                    </div>
+
+                    <div style="float:left;">
+                        <button class="btn btn-secondary" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    </div>
+                </div>
+                <!-- Circles which indicates the steps of the form: -->
+                <div style="text-align:center;margin-top:40px;">
+                    <span class="step"></span>
+                    <span class="step"></span>
+                    <span class="step"></span>
+                    <span class="step"></span>
+                </div>
+            </form>
+            <div class="text-center">
+                <a class="d-block small mt-3" href="{% url 'user_login' %}">Return to Login Page</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body_block %}

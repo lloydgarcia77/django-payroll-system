@@ -1,0 +1,45 @@
+{% load staticfiles %}
+{% for record in query %}
+<tr>
+    <td style="width: 5%">{{ record.id }}</td>
+    <td style="width: 20%">{{ record.last_name }}, {{ record.middle_name }} {{ record.first_name }} {{ record.suffix }}.</td>
+    <td style="width: 15%">{{ record.dob }}</td>
+    <td style="width: 10%">{{ record.mobile_no }}</td>
+    <td style="width: 5%">{{ record.age }}</td>
+    <td style="width: 10%">{{ record.gender }}</td>
+    <td style="width: 20%">{{ record.address }}</td>
+    <td style="width: 15%" align="center">
+        <div class="d-md-flex align-items-center justify-content-between mb-4">
+            <button type="button" data-url="{% url 'update_employee' record.id %}"
+                    class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm show-edit-employee-form" data-toggle="tooltip" data-placement="top" title="Edit">
+                <span class="fas fa-pencil-alt fa-sm text-black-50"></span>
+
+            </button>
+
+            <button type="button" data-url="{% url 'delete_employee' record.id %}"
+                    class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm show-delete-employee-form" data-toggle="tooltip" data-placement="top" title="Delete">
+                <span class="fas fa-trash-alt fa-sm text-white-50"></span>
+
+            </button>
+
+
+            <button type="button" data-url="{% url 'create_payroll_bill' record.id %}"
+                    class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm show-payroll-employee-form" data-toggle="tooltip" data-placement="top" title="Create Payroll">
+                <span class="fas fa-credit-card fa-sm text-white-50"></span>
+
+            </button>
+
+            <button type="button" data-url="{% url 'employee_payroll_history' record.id %}"
+                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm show-payroll-history-employee-form" data-toggle="tooltip" data-placement="top" title="History">
+                <span class="fas fa-history fa-sm text-white-50"></span>
+
+            </button>
+        </div>
+
+    </td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="12" class="text-center bg-warning">No Records!</td>
+</tr>
+{% endfor %}

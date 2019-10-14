@@ -1,0 +1,20 @@
+{% load staticfiles %}
+{% for record in query %}
+<tr>
+    <td style="width: 5%" class="text-center">{{ record.id }}</td>
+    <td style="width: 20%" class="text-center">{{ record.payroll_cut_off_period_from }} - {{ record.payroll_cut_off_period_to }}</td>
+    <td style="width: 15%" class="text-center">{{ record.payroll_date }}</td>
+    <td style="width: 15%" align="center">
+        <button type="button" data-url="{% url 'client_employee_payroll_page_detail' record.id  %}"
+                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm show-client-employee-payroll-form" data-toggle="tooltip" data-placement="top" title="View">
+                <span class="fas fa-eye fa-sm text-white-50"></span>
+        </button>
+    </td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="4" class="text-center bg-warning">No Records!</td>
+</tr>
+{% endfor %}
+
+
